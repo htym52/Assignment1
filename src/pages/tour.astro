@@ -1,0 +1,39 @@
+---
+import Nav from "../components/nav.astro";
+import Footer from "../components/footer.astro";
+import "../style/global.css"
+
+let posts = await Astro.glob('../pages/blog/*.md');
+
+posts = posts.map((p) => {
+  const frontmatter = p.frontmatter;
+  const url = p.url;
+  const description = frontmatter.description;
+  return { url, frontmatter, description };
+});
+---
+
+<Nav />
+
+<section class="container">
+  <h1>News & Tour</h1>
+
+  <div class="cards">
+    {posts.map((post) => (
+      <article class="card">
+        <a href={post.url} class="card-link">
+          <div class="card-image">
+            <img src={post.frontmatter.image} alt={post.frontmatter.title} />
+          </div>
+
+          <div class="card-content">
+            <h3>{post.frontmatter.title}</h3>
+            {post.description && <p class="card-description">{post.description}</p>}
+          </div>
+        </a>
+      </article>
+    ))}
+  </div>
+</section>
+
+<Footer />

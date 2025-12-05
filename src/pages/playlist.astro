@@ -1,0 +1,81 @@
+---
+import Nav from "../components/nav.astro";
+import Footer from "../components/footer.astro";
+import "../style/global.css";
+---
+
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Playlist</title>
+  </head>
+
+  <body>
+    <Nav />
+
+    <main class="playlist-page">
+      <h1>Song Titles</h1>
+
+      <!-- Song list -->
+      <ul id="playlist"></ul>
+
+      <!-- Add Song Form -->
+      <form id="addSongForm">
+        <input id="songInput" type="text" placeholder="Add a new song" required />
+        <button type="submit">Add Song</button>
+      </form>
+
+      <!-- Shuffle songs -->
+      <button id="shuffleBtn">Shuffle</button>
+    </main>
+
+    <Footer />
+
+    <script>
+      // Initial songs (beginner friendly)
+      let songs = ["Zombie", "Time of Our Life", "Sweet Chaos", "I Wait"];
+
+      let playlist = document.getElementById("playlist");
+      let form = document.getElementById("addSongForm");
+      let songInput = document.getElementById("songInput");
+      let shuffleBtn = document.getElementById("shuffleBtn");
+
+      // Display songs
+      function updateSongList() {
+        playlist.innerHTML = "";
+
+        for (let i = 0; i < songs.length; i++) {
+          let li = document.createElement("li");
+          li.textContent = songs[i];
+          playlist.appendChild(li);
+        }
+      }
+
+      // Show songs on load
+      updateSongList();
+
+      // Add song USING THE FORM
+      form.addEventListener("submit", function (event) {
+        event.preventDefault(); // Stop page refresh
+
+        let newSong = songInput.value;
+
+        if (newSong !== "") {
+          songs.push(newSong);
+          songInput.value = ""; // Clear input
+          updateSongList();
+        }
+      });
+
+      // Shuffle button
+      shuffleBtn.addEventListener("click", function () {
+        songs.sort(function () {
+          return Math.random() - 0.5;
+        });
+
+        updateSongList();
+      });
+    </script>
+  </body>
+</html>
