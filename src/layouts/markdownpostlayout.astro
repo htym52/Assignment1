@@ -1,0 +1,23 @@
+---
+import Nav from "../components/nav.astro"
+import Footer from "../components/footer.astro";
+import "../style/global.css";
+const{frontmatter} = Astro.props;
+const{title, image, } = frontmatter;
+---
+
+<Nav />
+<article class="md-box">
+    <h1> {title}</h1>
+    <div class="row">
+        {image ? <img src={image} alt={title} class="padchange"/> : null}
+        <div class="column">
+            <slot />
+        </div>
+    </div>
+</article>
+
+
+
+
+<Footer />
