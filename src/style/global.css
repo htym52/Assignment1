@@ -148,24 +148,23 @@ body {
   gap: 20px;
 }
 
-/* Featured image (frontmatter) */
+
 .md-box .padchange {
-  width: 100%;       /* scale to container width */
-  max-width: 700px;  /* never too wide */
+  width: 100%;       
+  max-width: 700px; 
   height: auto;
   display: block;
-  margin: 0 auto 20px; /* center with margin */
-  border-radius: 10px;
+  margin: 0 auto 20px; 
 }
 
-/* Column for Markdown content */
+
 .md-box .column {
   display: flex;
   flex-direction: column;
   gap: 15px;
 }
 
-/* Markdown images inside the post */
+/* Markdown images inside post */
 .md-box .column img {
   max-width: 100%;
   height: auto;
@@ -190,24 +189,6 @@ body {
 .md-box .column a:hover {
   text-decoration: underline;
 }
-
-/* Optional: code blocks 
-.md-box .column pre {
-  background: #f5f5f5;
-  padding: 10px;
-  overflow-x: auto;
-  border-radius: 5px;
-}*/
-
-/* Blockquotes
-.md-box .column blockquote {
-  border-left: 4px solid #ccc;
-  padding-left: 15px;
-  color: #555;
-  font-style: italic;
-  margin: 15px 0;
-}*/
-
 
 
 .container {
